@@ -13,9 +13,10 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh '''uname -a
-hostname
-ls -l'''
+        sh '''hostname
+date'''
+        sh '''./gradlew clean
+./gradlew assembleDebug'''
       }
     }
   }
