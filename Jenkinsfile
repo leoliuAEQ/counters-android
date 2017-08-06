@@ -13,7 +13,9 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh 'ls -l '
+        sh '''name -a
+hostname
+ls -l'''
       }
     }
   }
