@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'android'
+    }
+    
+  }
   stages {
     stage('Greetings') {
       steps {
@@ -8,13 +13,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        node(label: 'android') {
-          sh '''ls -l
-./gradlew clean
-./gradlew assembleDebug
-'''
-        }
-        
+        sh 'ls -l '
       }
     }
   }
