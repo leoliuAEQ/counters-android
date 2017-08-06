@@ -6,5 +6,11 @@ pipeline {
         echo 'Hello.'
       }
     }
+    stage('Build') {
+      steps {
+        node(label: 'android')
+        timestamps()
+      }
+    }
   }
 }
