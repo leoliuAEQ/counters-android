@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh '''name -a
+        sh '''uname -a
 hostname
 ls -l'''
       }
