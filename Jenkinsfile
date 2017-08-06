@@ -9,8 +9,10 @@ pipeline {
     stage('Build') {
       steps {
         node(label: 'android') {
-          sh './gradlew clean'
-          sh './gradlew assembleDebug'
+          sh '''ls -l
+./gradlew clean
+./gradlew assembleDebug
+'''
         }
         
       }
