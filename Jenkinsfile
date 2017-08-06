@@ -8,8 +8,10 @@ pipeline {
     }
     stage('Build') {
       steps {
-        node(label: 'android')
-        timestamps()
+        node(label: 'android') {
+          timestamps()
+        }
+        
       }
     }
   }
