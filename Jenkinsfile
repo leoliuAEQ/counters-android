@@ -15,14 +15,13 @@ pipeline {
       steps {
         sh 'hostname'
         sh 'date'
-        sh './gradlew clean'
         sh './gradlew build'
       }
     }
     stage('Test Report') {
       steps {
-        pwd()
-        junit './app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml'
+        sh '''ls -lR app/build/test-results
+'''
       }
     }
     stage('Archive') {
