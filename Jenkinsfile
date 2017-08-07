@@ -21,6 +21,7 @@ pipeline {
     }
     stage('Test Report') {
       steps {
+        pwd()
         junit './app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml'
       }
     }
