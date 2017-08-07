@@ -18,13 +18,23 @@ pipeline {
         sh '''./gradlew clean
 '''
         sh './gradlew assembleDebug'
+        stash(name: 'app-debug', includes: 'app/build/outputs/**/*.apk')
       }
     }
     stage('Test') {
       steps {
-        sh './gradlew testDebugUnitTest'
-        junit 'app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml'
-        sh 'cat \'app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml\''
+        parallel(
+          "Test": {
+            sh './gradlew testDebugUnitTest'
+            junit 'app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml'
+            sh 'cat \'app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml\''
+            
+          },
+          "Selenium": {
+            input 'Waiting here ...'
+            
+          }
+        )
       }
     }
     stage('Archive') {
