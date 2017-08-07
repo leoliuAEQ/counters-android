@@ -14,12 +14,16 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        setTitle("One Counter");
+        setTitle(getString(R.string.DetailActivityTitle));
 
         Intent intent = getIntent();
-        Integer value = intent.getIntExtra(MainActivity.EXTRA_VALUE, -1);
+        Model model = (Model) intent.getSerializableExtra(MainActivity.EXTRA_VALUE);
 
         textView = (TextView) findViewById(R.id.textView);
-        textView.setText(String.format("The counter value is: %d", value));
+        if (model == null) {
+            textView.setText(R.string.model_not_found);
+        } else {
+            textView.setText(model.toString());
+        }
     }
 }

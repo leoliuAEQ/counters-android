@@ -18,24 +18,22 @@ public class MainActivity extends AppCompatActivity {
 
     private MenuItem menuItemAdd;
     private ListView listView;
-    private ArrayAdapter<Integer> listViewAdapter;
-
-    private int counter = 0;
+    private ArrayAdapter<Model> listViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listViewAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_list_item_1, new ArrayList<Integer>());
+        listViewAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, new ArrayList<Model>());
         listView = (ListView)findViewById(R.id.listView);
         listView.setAdapter(listViewAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Integer value = (Integer) listView.getItemAtPosition(i);
+                Model model = (Model) listView.getItemAtPosition(i);
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                intent.putExtra(EXTRA_VALUE, value);
+                intent.putExtra(EXTRA_VALUE, model);
                 startActivity(intent);
             }
         });
@@ -48,8 +46,7 @@ public class MainActivity extends AppCompatActivity {
         menuItemAdd.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                listViewAdapter.insert(counter, 0);
-                counter++;
+                listViewAdapter.insert(new Model(), 0);
                 return true;
             }
         });
