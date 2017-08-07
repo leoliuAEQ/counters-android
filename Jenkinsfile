@@ -22,6 +22,7 @@ pipeline {
       steps {
         sh '''ls -lR app/build/test-results
 '''
+        junit 'app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml'
       }
     }
     stage('Archive') {
