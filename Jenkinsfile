@@ -24,6 +24,7 @@ pipeline {
       steps {
         sh './gradlew testDebugUnitTest'
         junit 'app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml'
+        sh 'cat \'app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml\''
       }
     }
     stage('Archive') {
