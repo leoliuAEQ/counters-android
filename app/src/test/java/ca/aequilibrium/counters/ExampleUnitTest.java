@@ -10,8 +10,20 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class ExampleUnitTest {
+
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void test_modelIncrementsValue() {
+        Model m1 = new Model();
+        Model m2 = new Model();
+
+        assertTrue(m1.getValue() + 1 == m2.getValue());
+    }
+
+    @Test
+    public void test_modelTimestampsAreIncremental() {
+        Model m1 = new Model();
+        Model m2 = new Model();
+
+        assertTrue(m1.getCreated().compareTo(m2.getCreated()) <= 0);
     }
 }

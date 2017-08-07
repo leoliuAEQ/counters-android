@@ -18,6 +18,14 @@ class Model implements Serializable {
         counter++;
     }
 
+    Date getCreated() {
+        return created;
+    }
+
+    int getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS", Locale.US);
