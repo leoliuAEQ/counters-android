@@ -19,5 +19,10 @@ pipeline {
         sh './gradlew assembleDebug'
       }
     }
+    stage('Archive') {
+      steps {
+        archiveArtifacts '**/*.apk'
+      }
+    }
   }
 }
