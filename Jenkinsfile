@@ -13,10 +13,10 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh '''hostname
-date'''
-        sh '''./gradlew clean
-./gradlew assembleDebug'''
+        sh 'hostname'
+        sh 'date'
+        sh './gradlew clean'
+        sh './gradlew assembleDebug'
       }
     }
   }
