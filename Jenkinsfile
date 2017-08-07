@@ -15,13 +15,14 @@ pipeline {
       steps {
         sh 'hostname'
         sh 'date'
-        sh './gradlew build'
+        sh '''./gradlew clean
+'''
+        sh './gradlew assembleDebug'
       }
     }
-    stage('Test Report') {
+    stage('Test') {
       steps {
-        sh '''ls -lR app/build/test-results
-'''
+        sh './gradlew testDebugUnitTest'
         junit 'app/build/test-results/testDebugUnitTest/TEST-ca.aequilibrium.counters.ExampleUnitTest.xml'
       }
     }
