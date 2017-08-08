@@ -1,17 +1,11 @@
 pipeline {
-  agent any
+  agent none
   
   options {
     skipDefaultCheckout() 
   }
   
   stages {
-    stage('Greetings') {
-      steps {
-        sh 'hostname'
-        echo 'Hello.'
-      }
-    }
     stage('Build') {
       agent {
         node {
@@ -43,6 +37,7 @@ pipeline {
       }
     }
     stage('Archive') {
+      agent any
       steps {
         sh 'hostname'
         sh 'pwd'
