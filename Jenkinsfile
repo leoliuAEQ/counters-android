@@ -13,6 +13,7 @@ pipeline {
         }
       }
       steps {
+        checkout scm
         sh 'hostname'
         sh './gradlew clean'
         sh './gradlew assembleDebug'
