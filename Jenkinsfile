@@ -8,12 +8,12 @@ pipeline {
       }
     }
     stage('Build') {
-      steps {
-        agent {
-          node {
-            label 'android-sdk'
-          }
+      agent {
+        node {
+          label 'android-sdk'
         }
+      }
+      steps {
         sh 'hostname'
         sh './gradlew clean'
         sh './gradlew assembleDebug'
@@ -24,12 +24,12 @@ pipeline {
       }
     }
     stage('Appium') {
-      steps {
-        agent {
-          node {
-            label 'android-appium'
-          }
+      agent {
+        node {
+          label 'android-appium'
         }
+      }
+      steps {
         sh 'hostname'
         sh 'pwd'
         sh 'ls -lR'
